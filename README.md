@@ -1,4 +1,20 @@
+In this repository I want to rewrite the partial code to help speed up inference of nanoGPT presented by Andrej Karpathy. 
 
+The purpose of it is to better understand how Transformer architecture works by actually writing code and, if possible, making it better.
+
+# TODO
+- [x] KV Cache
+- [ ] Speculative Decoding
+...
+
+# Usage
+Original nanoGPT inference:
+`python sample_kvcache.py --init_from=gpt2  --num_samples=1 --max_new_tokens=100 --temperature=1.0 --device=cpu`
+For generating 1000 tokens, Time taken 11.982s.
+
+nanoGPT inference with KV Cache:
+`python sample_kvcache.py --init_from=gpt2  --num_samples=1 --max_new_tokens=100 --temperature=1.0 --device=cpu --use_kvcache=True`
+Using KV Cache, Time taken - 4.296s, **Significantly faster!!**
 # nanoGPT
 
 ![nanoGPT](assets/nanogpt.jpg)
