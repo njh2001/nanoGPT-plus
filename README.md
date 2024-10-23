@@ -10,7 +10,6 @@ The purpose of it is to better understand how Transformer architecture works by 
 - [ ] ...
 
 # Usage
-# Usage
 Original nanoGPT inference:
 
 ```
