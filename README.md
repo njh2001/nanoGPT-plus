@@ -4,7 +4,9 @@ The purpose of it is to better understand how Transformer architecture works by 
 
 # TODO
 - [x] KV Cache
-- [ ] Speculative Decoding
+- [x] Speculative Decoding
+- [ ] Quantization
+- [ ] Pruning
 - [ ] ...
 
 # Usage
@@ -19,7 +21,7 @@ $ python sample_kvcache.py \
     --device=cpu
 ```
 
-For generating 100 tokens, Time taken 13.561s(Because I don't have GPU).
+For generating 100 tokens(batch size = 2), Time taken 13.561s(Because I don't have GPU).
 
 nanoGPT inference with KV Cache:
 
@@ -32,6 +34,20 @@ $ python sample_kvcache.py \
 ```
 
 Using KV Cache, Time taken - 4.076s, **Significantly faster!!**
+
+nanoGPT inference with speculative:
+
+```
+$ python sample_speculative.py \
+    --init_from=gpt2-medium --temperature=1.0 --top_k=1 \
+    --start="What is the answer to life, the universe, and everything?" \
+    --num_samples=1 --max_new_tokens=100 \
+    --device=cpu --use_speculative=True 
+```
+
+For generating 100 tokens(batch size = 1), the main model(GPT2-medium) takens - 27.931s.
+
+Using Speculative(the draft model is GPT2), Time taken - 13.896s.
 # nanoGPT
 
 ![nanoGPT](assets/nanogpt.jpg)
